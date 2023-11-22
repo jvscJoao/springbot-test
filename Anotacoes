@@ -1,0 +1,8 @@
+Atalhos (Vs Code) 
+    'Ctrl + .': Geração de Get/Setter, contrutores igual Eclipse 
+
+Interfaces: São usadas para definir "contratos" que a classe deve cumprir
+Enum: São usadas para representar um conjunto de variaveis constantes
+API (Interface de Programação de Aplicações): Conjunto de regras e ferramentas onde permite que diferentes softwares comuniquem entre si.
+JPA (Java Persistence API): É uma especificação do Java onde fornece conjunto de interfaces e padrões para persistência de dados em BD, permitindo que você 
+represente Classes/Objetos Java como dados em um BD.
