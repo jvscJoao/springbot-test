@@ -1,13 +1,25 @@
 package com.example.test.springboot.test_springboot.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity // Usada para facilitar mapeamento da classe para o Banco de Dados
 public class Cliente {
     
-    
+    @Id // Identificar chave primária para uma tabela do banco de dados
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /*
+     * Define como as chaves primárias devem ser geradas
+     * GenerationType.AUTO: JPA escolhe automaticamente a estratégia apropriada.
+     * GenerationType.IDENTITY: Autoincremento no banco de dados.
+     * GenerationType.SEQUENCE: Gerador de sequência no BD.
+     * GenerationType.TABLE: Usa uma tabela de BD para gerar chaves.
+     */
     private int id;
     private String nome;
     private String cpf;
-
-    Cliente() {}
 
     Cliente(int id, String nome, String cpf) {
         this.id = id;
