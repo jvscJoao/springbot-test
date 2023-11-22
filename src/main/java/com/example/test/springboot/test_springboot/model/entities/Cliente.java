@@ -1,4 +1,4 @@
-package com.example.test.springboot.test_springboot.model;
+package com.example.test.springboot.test_springboot.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
