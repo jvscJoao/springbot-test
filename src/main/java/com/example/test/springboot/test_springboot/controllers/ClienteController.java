@@ -2,7 +2,10 @@ package com.example.test.springboot.test_springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.test.springboot.test_springboot.model.entities.Cliente;
@@ -33,5 +36,11 @@ public class ClienteController {
     @GetMapping
     public Iterable<Cliente> mostrarClientes() {
         return clienteRepository.findAll();
+    }
+
+    @PostMapping
+    public @ResponseBody Cliente salvarCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
+        return cliente;
     }
 }
