@@ -16,10 +16,12 @@ public class Cliente {
      * GenerationType.IDENTITY: Autoincremento no banco de dados.
      * GenerationType.SEQUENCE: Gerador de sequência no BD.
      * GenerationType.TABLE: Usa uma tabela de BD para gerar chaves.
-     */
+    */
     private int id;
     private String nome;
     private String cpf;
+
+    Cliente() {}
 
     Cliente(int id, String nome, String cpf) {
         this.id = id;
