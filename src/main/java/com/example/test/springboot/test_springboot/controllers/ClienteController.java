@@ -1,10 +1,14 @@
 package com.example.test.springboot.test_springboot.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,17 +34,32 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
 
     /*
-     * GetMapping: Quase mesma função do RequestMapping, porém, já tem um método HTTP embutido(GET)
+     * GetMapping: Quase mesma função do RequestMapping, porém, já tem um método HTTP embutido(GET - Listar)
      * Iterable: Interface usava para adicionar entidades e facilmente percorrer.
     */
     @GetMapping
     public Iterable<Cliente> mostrarClientes() {
         return clienteRepository.findAll();
     }
-
+    /*
+     * PostMapping: Quase mesma função do RequestMapping, porém, já tem um método HTTP embutido(POST - Adicionar)
+     * @ResponseBody: Interface usava para adicionar entidades e facilmente percorrer.
+    */
     @PostMapping
     public @ResponseBody Cliente salvarCliente(Cliente cliente) {
         clienteRepository.save(cliente);
         return cliente;
     }
+
+    /*
+     * GetMapping: Adicionei um caminho na URL onde depois / é passado o ID do cliente.
+     * PathVariable: Útil quando valores necessários estão incorporados diretamente na estrutura do caminho URL.
+     * RequestParam: Útil para parâmetros de consulta opcionais ou adicionais em uma URL.
+    */
+    @GetMapping("/{id}")
+    public Optional<Cliente> buscarClientePorId(@PathVariable int id) {
+        return clienteRepository.findById(id);
+    }
+
+
 }
