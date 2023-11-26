@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,7 +51,7 @@ public class ClienteController {
     }
 
     /*
-     * GetMapping: Adicionei um caminho na URL onde depois / é passado o ID do cliente.
+     * GetMapping: Adicionei um caminho na URL onde depois da / e é passado o ID do cliente.
      * PathVariable: Útil quando valores necessários estão incorporados diretamente na estrutura do caminho URL.
      * RequestParam: Útil para parâmetros de consulta opcionais ou adicionais em uma URL.
     */
