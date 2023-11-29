@@ -38,6 +38,6 @@ public class ClienteControllerTest {
     */
     @Test
     public void adicionandoUmNovoCliente() {
-        clienteController.salvarCliente(cliente);
+        clienteController.create(cliente);
     }
 }

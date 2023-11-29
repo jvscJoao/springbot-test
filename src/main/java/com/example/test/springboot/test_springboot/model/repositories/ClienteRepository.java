@@ -3,13 +3,13 @@ package com.example.test.springboot.test_springboot.model.repositories;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.test.springboot.test_springboot.model.entities.Cliente;
 
 @Repository
-public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     /*
      * Repository: É usado para armazenamento de dados, no caso estou armazenando Cliente(s)
      * CrudRepository: Interface que fornece métodos para realizar operações CRUD (Create, Read, Update, Delete)

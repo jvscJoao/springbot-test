@@ -1,8 +1,11 @@
 package com.example.test.springboot.test_springboot.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +40,7 @@ public class ClienteController {
      * Iterable: Interface usava para adicionar entidades e facilmente percorrer.
     */
     @GetMapping
-    public Iterable<Cliente> mostrarClientes() {
+    public List<Cliente> readAll() {
         return clienteRepository.findAll();
     }
     /*
@@ -45,7 +48,7 @@ public class ClienteController {
      * @ResponseBody: Interface usava para adicionar entidades e facilmente percorrer.
     */
     @PostMapping
-    public @ResponseBody Cliente salvarCliente(Cliente cliente) {
+    public @ResponseBody Cliente create(Cliente cliente) {
         clienteRepository.save(cliente);
         return cliente;
     }
@@ -56,12 +59,18 @@ public class ClienteController {
      * RequestParam: Útil para parâmetros de consulta opcionais ou adicionais em uma URL.
     */
     @GetMapping("/{id}")
-    public Optional<Cliente> buscarClientePorId(@PathVariable int id) {
-        return clienteRepository.findById(id);
+    public ResponseEntity<?> readById(@PathVariable int id) {
+        Cliente cliente = clienteRepository.findById(id).orElse(null);
+
+        if (cliente == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado com ID: " + id);
+        } else {
+            return ResponseEntity.ok(cliente);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void apagarCliente(@PathVariable int id) {
+    public void delete(@PathVariable int id) {
         clienteRepository.deleteById(id);
     }
 }
