@@ -40,8 +40,9 @@ public class ClienteController {
      * Iterable: Interface usava para adicionar entidades e facilmente percorrer.
     */
     @GetMapping
-    public List<Cliente> readAll() {
-        return clienteRepository.findAll();
+    public ResponseEntity<List<Cliente>> readAll() {
+        List<Cliente> list = clienteRepository.findAll();
+        return ResponseEntity.ok().body(list);
     }
     /*
      * PostMapping: Quase mesma função do RequestMapping, porém, já tem um método HTTP embutido(POST - Adicionar)
